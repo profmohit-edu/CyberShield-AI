@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 510" role="img" aria-labelledby="title desc">
+  <title id="title">CyberShield AI architecture</title>
+  <desc id="desc">A Solidity contract moves through orchestration, three security analyzers, a consensus engine, AI security reasoning, explainability, risk scoring, a dashboard, and a deployment readiness assessment.</desc>
+  <defs>
+    <linearGradient id="blue" x1="0" x2="1"><stop stop-color="#0B5FFF"/><stop offset="1" stop-color="#00A8EF"/></linearGradient>
+    <linearGradient id="violet" x1="0" x2="1"><stop stop-color="#6536E8"/><stop offset="1" stop-color="#935CFF"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-40%" width="140%" height="180%"><feDropShadow dx="0" dy="7" stdDeviation="7" flood-color="#17376D" flood-opacity=".13"/></filter>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 8 4 0 8Z" fill="#8AA4C8"/></marker>
+    <style>.t{font:700 16px Inter,Arial;fill:#102044}.tm{font:700 12px Inter,Arial;fill:#102044}.s{font:600 11px Inter,Arial;fill:#65758F}.xs{font:600 8.5px Inter,Arial;fill:#65758F}.w{font:700 16px Inter,Arial;fill:white}.wm{font:700 11px Inter,Arial;fill:white}.ws{font:600 10px Inter,Arial;fill:#DDEBFF}.line{stroke:#8AA4C8;stroke-width:2.5;fill:none;marker-end:url(#arrow)}.chip{filter:url(#shadow)}</style>
+  </defs>
+  <rect width="1000" height="510" rx="26" fill="#F7FAFF"/>
+  <path d="M18 150C170 36 300 48 440 120s286 80 542-18" fill="none" stroke="#E7F0FF" stroke-width="42" stroke-linecap="round"/>
+  <g class="chip" transform="translate(32 49)"><rect width="150" height="72" rx="17" fill="#fff"/><circle cx="36" cy="36" r="21" fill="#EAF2FF"/><path d="M30 39h12M36 33v12M27 27h18v18H27Z" fill="none" stroke="#0B5FFF" stroke-width="2"/><text class="t" x="68" y="31">Developer</text><text class="s" x="68" y="49">initiates scan</text></g>
+  <path class="line" d="M182 85h46"/>
+  <g class="chip" transform="translate(238 49)"><rect width="170" height="72" rx="17" fill="#fff"/><circle cx="36" cy="36" r="21" fill="#EAFBFF"/><path d="M29 42h14M36 27v14m-5-9 5-5 5 5" fill="none" stroke="#00A6DE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><text class="t" x="68" y="31">Upload contract</text><text class="s" x="68" y="49">Solidity / GitHub</text></g>
+  <path class="line" d="M408 85h46"/>
+  <g class="chip" transform="translate(464 40)"><rect width="206" height="90" rx="19" fill="url(#blue)"/><circle cx="42" cy="45" r="23" fill="#fff" fill-opacity=".14"/><path d="m34 46 6 6 11-14" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text class="wm" x="79" y="41">Security Orchestrator</text><text class="ws" x="79" y="60">runs parallel analyzers</text></g>
+  <path d="M670 85h49v110M719 163h34M719 227h34M719 291h34" fill="none" stroke="#8AA4C8" stroke-width="2.5"/>
+  <g class="chip" transform="translate(753 136)"><rect width="110" height="52" rx="14" fill="#fff" stroke="#D8E5F7"/><circle cx="27" cy="26" r="12" fill="#FFE8ED"/><text x="27" y="30" text-anchor="middle" font-family="Inter" font-size="10" font-weight="800" fill="#EF3E61">SL</text><text class="t" x="48" y="31">Slither</text></g>
+  <g class="chip" transform="translate(753 201)"><rect width="110" height="52" rx="14" fill="#fff" stroke="#D8E5F7"/><circle cx="27" cy="26" r="12" fill="#F0EAFE"/><text x="27" y="30" text-anchor="middle" font-family="Inter" font-size="10" font-weight="800" fill="#7C3AED">MY</text><text class="t" x="48" y="31">Mythril</text></g>
+  <g class="chip" transform="translate(753 266)"><rect width="110" height="52" rx="14" fill="#fff" stroke="#D8E5F7"/><circle cx="27" cy="26" r="12" fill="#E5FAFF"/><text x="27" y="30" text-anchor="middle" font-family="Inter" font-size="10" font-weight="800" fill="#00A6DE">SO</text><text class="t" x="48" y="31">Solhint</text></g>
+  <path class="line" d="M863 227h43"/>
+  <g class="chip" transform="translate(906 183)"><rect width="76" height="88" rx="18" fill="#102044"/><path d="M24 32h28M29 24l-5 8 5 8m18-16 5 8-5 8M28 52h20" fill="none" stroke="#65D9FF" stroke-width="2" stroke-linecap="round"/><text x="38" y="68" text-anchor="middle" font-family="Inter" font-size="8" font-weight="700" fill="#fff">CONSENSUS</text><text x="38" y="79" text-anchor="middle" font-family="Inter" font-size="8" font-weight="700" fill="#65D9FF">ENGINE</text></g>
+  <path class="line" d="M944 271v42c0 25-20 45-45 45H686"/>
+  <g class="chip" transform="translate(473 323)"><rect width="213" height="72" rx="17" fill="url(#violet)"/><circle cx="39" cy="36" r="21" fill="#fff" fill-opacity=".14"/><path d="M32 35c-4-5 3-11 7-6 4-5 11 1 7 6 5 4-1 11-6 7-4 4-12-2-8-7Z" fill="none" stroke="#fff" stroke-width="2"/><text class="wm" x="73" y="31">AI Security Reasoning</text><text class="ws" x="73" y="50">evaluates preconditions</text></g>
+  <path class="line" d="M473 359h-44"/>
+  <g class="chip" transform="translate(235 323)"><rect width="194" height="72" rx="17" fill="#fff"/><circle cx="38" cy="36" r="21" fill="#EAFBFF"/><path d="M30 31h16v11H35l-5 4V31Z" fill="none" stroke="#00A6DE" stroke-width="2" stroke-linejoin="round"/><text class="tm" x="70" y="31">Explainability Engine</text><text class="s" x="70" y="50">source-linked rationale</text></g>
+  <path class="line" d="M235 359h-43"/>
+  <g class="chip" transform="translate(30 323)"><rect width="162" height="72" rx="17" fill="#fff"/><circle cx="37" cy="36" r="21" fill="#FFF1E9"/><path d="M27 42a12 12 0 0 1 20 0m-10-5 6-6" fill="none" stroke="#FF6B35" stroke-width="2" stroke-linecap="round"/><text class="t" x="69" y="31">Risk Scoring</text><text class="xs" x="69" y="47">severity · agreement</text><text class="xs" x="69" y="59">+ contract context</text></g>
+  <path class="line" d="M111 395v39"/>
+  <g class="chip" transform="translate(30 441)"><rect width="208" height="52" rx="15" fill="#fff" stroke="#D8E5F7"/><path d="M20 17h27v18H20zM24 30l5-5 4 3 7-7" fill="none" stroke="#0B5FFF" stroke-width="2"/><text class="t" x="60" y="26">Interactive Dashboard</text><text class="s" x="60" y="42">prioritize · review</text></g>
+  <path class="line" d="M238 467h58"/>
+  <g class="chip" transform="translate(306 432)"><rect width="278" height="70" rx="17" fill="#0B5FFF"/><circle cx="38" cy="35" r="20" fill="#fff" fill-opacity=".15"/><path d="M32 26h10l5 5v13H32V26Zm10 0v6h5m-11 6 3 3 5-6" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><text class="wm" x="70" y="31">Deployment Readiness Assessment</text><text class="ws" x="70" y="50">findings · evidence · disposition</text></g>
+  <g transform="translate(625 431)"><rect width="340" height="72" rx="18" fill="#EAF2FF"/><text x="20" y="27" font-family="Inter" font-size="11" font-weight="800" fill="#0B5FFF" letter-spacing="1.4">DESIGN PRINCIPLE</text><text x="20" y="49" font-family="Inter" font-size="15" font-weight="700" fill="#102044">Deterministic tools find. AI explains. Humans decide.</text></g>
+</svg>

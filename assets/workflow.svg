@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 118" role="img" aria-labelledby="title desc">
+  <title id="title">CyberShield workflow</title><desc id="desc">Five proposed phases from contract ingestion to readiness assessment.</desc>
+  <defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#0B5FFF"/><stop offset="1" stop-color="#00C2FF"/></linearGradient><filter id="s" x="-20%" y="-30%" width="140%" height="160%"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#163C78" flood-opacity=".12"/></filter></defs>
+  <path d="M71 48h576" stroke="#D7E4F7" stroke-width="5" stroke-linecap="round"/>
+  <path d="M71 48h576" stroke="url(#g)" stroke-width="3" stroke-dasharray="5 8" stroke-linecap="round"/>
+  <g font-family="Inter,Arial" text-anchor="middle">
+    <g transform="translate(72 48)" filter="url(#s)"><circle r="27" fill="#0B5FFF"/><text y="5" fill="#fff" font-size="14" font-weight="800">01</text></g><text x="72" y="94" font-size="12" font-weight="800" fill="#102044">INGEST</text><text x="72" y="110" font-size="10" font-weight="600" fill="#71809A">contract + context</text>
+    <g transform="translate(216 48)" filter="url(#s)"><circle r="27" fill="#1975FF"/><text y="5" fill="#fff" font-size="14" font-weight="800">02</text></g><text x="216" y="94" font-size="12" font-weight="800" fill="#102044">ANALYZE</text><text x="216" y="110" font-size="10" font-weight="600" fill="#71809A">parallel scanners</text>
+    <g transform="translate(360 48)" filter="url(#s)"><circle r="27" fill="#168EEF"/><text y="5" fill="#fff" font-size="14" font-weight="800">03</text></g><text x="360" y="94" font-size="12" font-weight="800" fill="#102044">REASON</text><text x="360" y="110" font-size="10" font-weight="600" fill="#71809A">verify exploitability</text>
+    <g transform="translate(504 48)" filter="url(#s)"><circle r="27" fill="#0BA8E7"/><text y="5" fill="#fff" font-size="14" font-weight="800">04</text></g><text x="504" y="94" font-size="12" font-weight="800" fill="#102044">REVIEW</text><text x="504" y="110" font-size="10" font-weight="600" fill="#71809A">evidence + suggestion</text>
+    <g transform="translate(648 48)" filter="url(#s)"><circle r="27" fill="#00C2FF"/><text y="5" fill="#fff" font-size="14" font-weight="800">05</text></g><text x="648" y="94" font-size="12" font-weight="800" fill="#102044">ASSESS</text><text x="648" y="110" font-size="10" font-weight="600" fill="#71809A">readiness outcome</text>
+  </g>
+</svg>
