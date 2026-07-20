@@ -11,7 +11,7 @@ router = APIRouter(prefix="/api/v1")
 async def system_status() -> SystemStatusResponse:
     """Describe currently available and planned platform capabilities."""
     return SystemStatusResponse(
-        phase="rest-api",
+        phase="professional-reporting",
         capabilities=[
             Capability(name="FastAPI application", status="available"),
             Capability(name="Slither adapter", status="available"),
@@ -20,6 +20,7 @@ async def system_status() -> SystemStatusResponse:
             Capability(name="Analyzer orchestrator", status="available"),
             Capability(name="Consensus engine", status="available"),
             Capability(name="REST API", status="available"),
+            Capability(name="Professional report generator", status="available"),
             Capability(name="AI reasoning", status="planned"),
         ],
     )

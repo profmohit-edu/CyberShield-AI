@@ -4,7 +4,7 @@ CyberShield AI is an open-source platform for explainable Solidity smart-contrac
 
 ## Project status
 
-CyberShield AI is in Phase 1: project foundation and infrastructure setup. Interfaces, analysis workflows, and integrations will be added incrementally with tests and backward-compatible contracts.
+CyberShield AI has completed Phase 8. The platform includes isolated Slither, Mythril, and Solhint adapters, concurrent orchestration, deterministic consensus correlation, a production REST API, and pure JSON, HTML, Markdown, SARIF 2.1.0, and PDF report generation.
 
 ## Core principles
 
@@ -23,11 +23,9 @@ The implementation follows the CyberShield AI reference architecture without int
 2. The Security Orchestrator validates the request and invokes analyzers.
 3. Slither, Mythril, and Solhint produce tool-specific findings.
 4. The Consensus Engine normalizes findings and records cross-tool agreement.
-5. AI Security Reasoning is reserved for a future provider abstraction supporting OpenAI or Gemini.
-6. The Explainability Engine links conclusions to analyzer evidence and source locations.
-7. Risk Scoring combines severity, analyzer agreement, and contract context.
-8. The interactive dashboard supports human review and disposition.
-9. The system produces a deployment readiness assessment.
+5. The Report Builder exports the complete evidence graph as JSON, HTML, Markdown, SARIF 2.1.0, or PDF.
+6. AI Security Reasoning is reserved for a future provider abstraction supporting OpenAI or Gemini.
+7. The interactive dashboard and deployment readiness workflows remain future milestones.
 
 ## Technology stack
 
@@ -39,6 +37,7 @@ The implementation follows the CyberShield AI reference architecture without int
 - Client assets: HTML, CSS, and JavaScript
 - Security engines: Slither, Mythril, and Solhint
 - Application server: Uvicorn
+- Reporting: Jinja2 and ReportLab
 - Packaging and deployment: Docker and Docker Compose
 - Testing: pytest
 
@@ -55,6 +54,8 @@ CyberShield-AI/
 ├── security/         # Security-engine adapters and finding normalization
 ├── models/           # Typed domain and transport models
 ├── services/         # Application use cases and orchestration services
+├── reports/          # Pure multi-format security report generation
+├── examples/reports/ # Generated sample reports and screenshots
 ├── utils/            # Shared infrastructure utilities
 ├── tests/            # Unit and integration tests
 ├── .env.example      # Documented environment variables
@@ -110,6 +111,8 @@ The application will be available at `http://127.0.0.1:8000`.
 Operational and discovery endpoints:
 
 - `GET /health` — dependency-free liveness check
+- `GET /version` — deployed application version
+- `POST /analyze` — multipart Solidity analysis pipeline
 - `GET /api/v1/status` — implementation phase and capability inventory
 - `GET /docs` — interactive OpenAPI documentation in development
 

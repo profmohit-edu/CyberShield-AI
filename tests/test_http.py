@@ -33,7 +33,7 @@ async def test_status_reports_completed_backend_pipeline_as_available() -> None:
 
     assert response.status_code == 200
     payload = response.json()
-    assert payload["phase"] == "rest-api"
+    assert payload["phase"] == "professional-reporting"
     assert payload["capabilities"][0] == {
         "name": "FastAPI application",
         "status": "available",

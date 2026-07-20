@@ -17,7 +17,7 @@ asyncio_mode = "auto"
 
 [tool.coverage.run]
 branch = true
-source = ["backend", "models", "security", "services", "utils"]
+source = ["backend", "models", "reports", "security", "services", "utils"]
 
 [tool.coverage.report]
 show_missing = true
@@ -33,9 +33,13 @@ select = ["E", "F", "I", "B", "UP", "ASYNC", "RUF"]
 [tool.mypy]
 python_version = "3.12"
 strict = true
-files = ["backend", "models", "security", "services", "utils", "tests"]
+files = ["backend", "models", "reports", "security", "services", "utils", "tests"]
 plugins = ["pydantic.mypy"]
 
 [[tool.mypy.overrides]]
 module = "tests.*"
 disallow_untyped_decorators = false
+
+[[tool.mypy.overrides]]
+module = "reportlab.*"
+ignore_missing_imports = true

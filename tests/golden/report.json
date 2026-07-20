@@ -1,0 +1,203 @@
+{
+  "analyzers": [
+    {
+      "analyzer": "slither",
+      "error": null,
+      "execution_time_ms": 42.25,
+      "finding_count": 1,
+      "status": "succeeded"
+    },
+    {
+      "analyzer": "mythril",
+      "error": null,
+      "execution_time_ms": 81.5,
+      "finding_count": 1,
+      "status": "succeeded"
+    },
+    {
+      "analyzer": "solhint",
+      "error": null,
+      "execution_time_ms": 9.75,
+      "finding_count": 1,
+      "status": "succeeded"
+    }
+  ],
+  "consensus_findings": [
+    {
+      "confidence_score": 0.7083,
+      "contributing_analyzers": [
+        "mythril",
+        "slither"
+      ],
+      "descriptions": [
+        "A caller can regain control before the state update completes.",
+        "External call occurs before the sender balance is cleared."
+      ],
+      "location": {
+        "end_column": 45,
+        "end_line": 9,
+        "path": "contracts/Vault.sol",
+        "start_column": 9,
+        "start_line": 8
+      },
+      "rule_ids": [
+        "SWC-107"
+      ],
+      "severity": "high",
+      "supporting_findings": [
+        {
+          "analyzer": "mythril",
+          "description": "A caller can regain control before the state update completes.",
+          "location": {
+            "end_column": 45,
+            "end_line": 9,
+            "path": "contracts/Vault.sol",
+            "start_column": 9,
+            "start_line": 9
+          },
+          "rule_id": "SWC-107",
+          "severity": "medium",
+          "title": "State change after external call"
+        },
+        {
+          "analyzer": "slither",
+          "description": "External call occurs before the sender balance is cleared.",
+          "location": {
+            "end_column": 45,
+            "end_line": 8,
+            "path": "contracts/Vault.sol",
+            "start_column": 9,
+            "start_line": 8
+          },
+          "rule_id": "SWC-107",
+          "severity": "high",
+          "title": "Reentrancy"
+        }
+      ],
+      "title": "Reentrancy"
+    },
+    {
+      "confidence_score": 0.6667,
+      "contributing_analyzers": [
+        "solhint"
+      ],
+      "descriptions": [
+        "Low-level call usage requires explicit defensive handling."
+      ],
+      "location": {
+        "end_column": 45,
+        "end_line": 8,
+        "path": "contracts/Vault.sol",
+        "start_column": 9,
+        "start_line": 8
+      },
+      "rule_ids": [
+        "avoid-low-level-calls"
+      ],
+      "severity": "low",
+      "supporting_findings": [
+        {
+          "analyzer": "solhint",
+          "description": "Low-level call usage requires explicit defensive handling.",
+          "location": {
+            "end_column": 45,
+            "end_line": 8,
+            "path": "contracts/Vault.sol",
+            "start_column": 9,
+            "start_line": 8
+          },
+          "rule_id": "avoid-low-level-calls",
+          "severity": "low",
+          "title": "Avoid low-level calls"
+        }
+      ],
+      "title": "Avoid low-level calls"
+    }
+  ],
+  "execution": {
+    "enabled_analyzers": [
+      "slither",
+      "mythril",
+      "solhint"
+    ],
+    "orchestrator_execution_time_ms": 85.125,
+    "source_size_bytes": 318,
+    "total_execution_time_ms": 91.75
+  },
+  "recommendations": [
+    "Block deployment until all critical and high-severity findings are remediated and independently retested.",
+    "Triage low and informational findings, documenting accepted risks and planned hardening work.",
+    "Review every supporting analyzer finding before changing code; consensus scores express evidence agreement, not exploitability.",
+    "Re-run all enabled analyzers after remediation and compare the new report with this baseline."
+  ],
+  "report": {
+    "generated_at": "2026-07-20T14:30:45.123000Z",
+    "product": "CyberShield AI",
+    "source_name": "Vault.sol",
+    "source_sha256": "f17decf1067e2440ca95baffa93febd8fd0f6d04aa9f07057248ae5d24f09627",
+    "version": "0.1.0"
+  },
+  "schema_version": "1.0",
+  "summary": {
+    "severity_counts": {
+      "critical": 0,
+      "high": 1,
+      "informational": 0,
+      "low": 1,
+      "medium": 0
+    },
+    "source_finding_count": 3,
+    "source_severity_counts": {
+      "critical": 0,
+      "high": 1,
+      "informational": 0,
+      "low": 1,
+      "medium": 1
+    },
+    "vulnerability_count": 2
+  },
+  "supporting_findings": [
+    {
+      "analyzer": "slither",
+      "description": "External call occurs before the sender balance is cleared.",
+      "location": {
+        "end_column": 45,
+        "end_line": 8,
+        "path": "contracts/Vault.sol",
+        "start_column": 9,
+        "start_line": 8
+      },
+      "rule_id": "SWC-107",
+      "severity": "high",
+      "title": "Reentrancy"
+    },
+    {
+      "analyzer": "mythril",
+      "description": "A caller can regain control before the state update completes.",
+      "location": {
+        "end_column": 45,
+        "end_line": 9,
+        "path": "contracts/Vault.sol",
+        "start_column": 9,
+        "start_line": 9
+      },
+      "rule_id": "SWC-107",
+      "severity": "medium",
+      "title": "State change after external call"
+    },
+    {
+      "analyzer": "solhint",
+      "description": "Low-level call usage requires explicit defensive handling.",
+      "location": {
+        "end_column": 45,
+        "end_line": 8,
+        "path": "contracts/Vault.sol",
+        "start_column": 9,
+        "start_line": 8
+      },
+      "rule_id": "avoid-low-level-calls",
+      "severity": "low",
+      "title": "Avoid low-level calls"
+    }
+  ]
+}

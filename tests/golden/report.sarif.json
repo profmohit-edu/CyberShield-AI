@@ -1,0 +1,242 @@
+{
+  "$schema": "https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/schemas/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "automationDetails": {
+        "id": "cybershield/vault-sol/f17decf1067e"
+      },
+      "invocations": [
+        {
+          "endTimeUtc": "2026-07-20T14:30:45.123000Z",
+          "executionSuccessful": true,
+          "properties": {
+            "analyzers": [
+              {
+                "analyzer": "slither",
+                "error": null,
+                "execution_time_ms": 42.25,
+                "finding_count": 1,
+                "status": "succeeded"
+              },
+              {
+                "analyzer": "mythril",
+                "error": null,
+                "execution_time_ms": 81.5,
+                "finding_count": 1,
+                "status": "succeeded"
+              },
+              {
+                "analyzer": "solhint",
+                "error": null,
+                "execution_time_ms": 9.75,
+                "finding_count": 1,
+                "status": "succeeded"
+              }
+            ],
+            "orchestratorExecutionTimeMs": 85.125,
+            "totalExecutionTimeMs": 91.75
+          },
+          "startTimeUtc": "2026-07-20T14:30:45.031250Z"
+        }
+      ],
+      "properties": {
+        "consensusFindingCount": 2,
+        "generatedAt": "2026-07-20T14:30:45.123000Z",
+        "severitySummary": {
+          "critical": 0,
+          "high": 1,
+          "informational": 0,
+          "low": 1,
+          "medium": 0
+        },
+        "sourceFindingCount": 3,
+        "sourceSha256": "f17decf1067e2440ca95baffa93febd8fd0f6d04aa9f07057248ae5d24f09627"
+      },
+      "results": [
+        {
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "contracts/Vault.sol"
+                },
+                "region": {
+                  "endColumn": 45,
+                  "endLine": 9,
+                  "startColumn": 9,
+                  "startLine": 8
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Reentrancy: A caller can regain control before the state update completes. (confidence 0.7083; reported by mythril, slither)"
+          },
+          "partialFingerprints": {
+            "cybershield/v1": "3e2e94350525c86d97b001a93f00ab46b883bf63db2913eb86ca5002b5da69b8"
+          },
+          "properties": {
+            "confidenceScore": 0.7083,
+            "contributingAnalyzers": [
+              "mythril",
+              "slither"
+            ],
+            "descriptions": [
+              "A caller can regain control before the state update completes.",
+              "External call occurs before the sender balance is cleared."
+            ],
+            "ruleIdentifiers": [
+              "SWC-107"
+            ],
+            "severity": "high",
+            "supportingFindings": [
+              {
+                "analyzer": "mythril",
+                "description": "A caller can regain control before the state update completes.",
+                "location": {
+                  "end_column": 45,
+                  "end_line": 9,
+                  "path": "contracts/Vault.sol",
+                  "start_column": 9,
+                  "start_line": 9
+                },
+                "rule_id": "SWC-107",
+                "severity": "medium",
+                "title": "State change after external call"
+              },
+              {
+                "analyzer": "slither",
+                "description": "External call occurs before the sender balance is cleared.",
+                "location": {
+                  "end_column": 45,
+                  "end_line": 8,
+                  "path": "contracts/Vault.sol",
+                  "start_column": 9,
+                  "start_line": 8
+                },
+                "rule_id": "SWC-107",
+                "severity": "high",
+                "title": "Reentrancy"
+              }
+            ]
+          },
+          "ruleId": "SWC-107",
+          "ruleIndex": 0
+        },
+        {
+          "level": "note",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "contracts/Vault.sol"
+                },
+                "region": {
+                  "endColumn": 45,
+                  "endLine": 8,
+                  "startColumn": 9,
+                  "startLine": 8
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Avoid low-level calls: Low-level call usage requires explicit defensive handling. (confidence 0.6667; reported by solhint)"
+          },
+          "partialFingerprints": {
+            "cybershield/v1": "3327755e644f2a6d9b70423e2976669d428702889d0efd3219819e4c4213c42c"
+          },
+          "properties": {
+            "confidenceScore": 0.6667,
+            "contributingAnalyzers": [
+              "solhint"
+            ],
+            "descriptions": [
+              "Low-level call usage requires explicit defensive handling."
+            ],
+            "ruleIdentifiers": [
+              "avoid-low-level-calls"
+            ],
+            "severity": "low",
+            "supportingFindings": [
+              {
+                "analyzer": "solhint",
+                "description": "Low-level call usage requires explicit defensive handling.",
+                "location": {
+                  "end_column": 45,
+                  "end_line": 8,
+                  "path": "contracts/Vault.sol",
+                  "start_column": 9,
+                  "start_line": 8
+                },
+                "rule_id": "avoid-low-level-calls",
+                "severity": "low",
+                "title": "Avoid low-level calls"
+              }
+            ]
+          },
+          "ruleId": "avoid-low-level-calls",
+          "ruleIndex": 1
+        }
+      ],
+      "tool": {
+        "driver": {
+          "fullName": "CyberShield AI Smart Contract Security Analyzer",
+          "name": "CyberShield AI",
+          "rules": [
+            {
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "fullDescription": {
+                "text": "A caller can regain control before the state update completes.\n\nExternal call occurs before the sender balance is cleared."
+              },
+              "id": "SWC-107",
+              "name": "reentrancy",
+              "properties": {
+                "precision": "medium",
+                "problem.severity": "high",
+                "security-severity": "8.0",
+                "tags": [
+                  "security",
+                  "smart-contract",
+                  "SWC-107"
+                ]
+              },
+              "shortDescription": {
+                "text": "Reentrancy"
+              }
+            },
+            {
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "fullDescription": {
+                "text": "Low-level call usage requires explicit defensive handling."
+              },
+              "id": "avoid-low-level-calls",
+              "name": "avoid-low-level-calls",
+              "properties": {
+                "precision": "medium",
+                "problem.severity": "low",
+                "security-severity": "3.0",
+                "tags": [
+                  "security",
+                  "smart-contract",
+                  "avoid-low-level-calls"
+                ]
+              },
+              "shortDescription": {
+                "text": "Avoid low-level calls"
+              }
+            }
+          ],
+          "semanticVersion": "0.1.0",
+          "version": "0.1.0"
+        }
+      }
+    }
+  ],
+  "version": "2.1.0"
+}
