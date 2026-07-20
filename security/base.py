@@ -13,6 +13,8 @@ class SourceLocation:
     path: str
     start_line: int
     end_line: int
+    start_column: int | None = None
+    end_column: int | None = None
 
 
 @dataclass(frozen=True, slots=True)
