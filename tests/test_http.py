@@ -27,15 +27,19 @@ async def test_health_contract() -> None:
     assert response.json() == {"status": "ok", "version": "0.1.0"}
 
 
-async def test_status_reports_unimplemented_integrations_as_planned() -> None:
+async def test_status_reports_completed_backend_pipeline_as_available() -> None:
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
         response = await client.get("/api/v1/status")
 
     assert response.status_code == 200
     payload = response.json()
-    assert payload["phase"] == "foundation"
+    assert payload["phase"] == "rest-api"
     assert payload["capabilities"][0] == {
         "name": "FastAPI application",
         "status": "available",
     }
-    assert all(item["status"] == "planned" for item in payload["capabilities"][1:])
+    assert all(item["status"] == "available" for item in payload["capabilities"][:-1])
+    assert payload["capabilities"][-1] == {
+        "name": "AI reasoning",
+        "status": "planned",
+    }

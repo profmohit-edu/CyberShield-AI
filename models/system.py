@@ -28,5 +28,5 @@ class Capability(StrictModel):
 class SystemStatusResponse(StrictModel):
     """Current implementation phase and capability inventory."""
 
-    phase: Literal["foundation"]
+    phase: Literal["rest-api"]
     capabilities: list[Capability]

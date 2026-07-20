@@ -24,6 +24,7 @@ class Settings(BaseSettings):
     environment: str = "development"
     log_level: str = "INFO"
     enable_api_docs: bool = True
+    max_contract_bytes: int = Field(default=1_000_000, gt=0)
     template_directory: Path = Field(default=PROJECT_ROOT / "templates")
     static_directory: Path = Field(default=PROJECT_ROOT / "static")
 
