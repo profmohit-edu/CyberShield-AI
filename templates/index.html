@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="CyberShield AI project foundation">
+    <title>{{ app_name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/app.css') }}">
+    <script defer src="{{ url_for('static', path='/js/app.js') }}"></script>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero" aria-labelledby="hero-title">
+        <p class="eyebrow">Explainable · multi-engine · human-reviewed</p>
+        <h1 id="hero-title">Security evidence developers can act on.</h1>
+        <p class="lede">CyberShield AI is being built to correlate Solidity analyzer findings, preserve their provenance, and support accountable remediation decisions.</p>
+        <div class="status-card">
+          <span class="status-dot" aria-hidden="true"></span>
+          <div><strong>Phase 1 foundation is online</strong><small>Application version {{ app_version }}</small></div>
+        </div>
+        <a class="button" href="/docs">Explore the API</a>
+      </section>
+      <section class="principles" aria-label="Platform principles">
+        <article><span>01</span><h2>Evidence first</h2><p>Every conclusion remains linked to its analyzer and source location.</p></article>
+        <article><span>02</span><h2>Isolated analysis</h2><p>Untrusted contracts will run in constrained security-engine workers.</p></article>
+        <article><span>03</span><h2>Humans decide</h2><p>AI explanations and remediations are advisory and require review.</p></article>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,50 +1,172 @@
-# CyberShield AI — Ideathon Proposal
+# CyberShield AI
 
-A final-submission, exactly four-page A4 proposal for **CyberShield AI: Explainable AI Copilot for Smart Contract Security**, submitted to INNOSTORM 2026 by Mohit Tiwari.
+CyberShield AI is an open-source platform for explainable Solidity smart-contract security analysis. It coordinates established security tools, correlates their findings, and presents evidence for human review. The platform is intended to support security assessment; it does not replace an independent audit or authorize deployment.
 
-## Deliverables
+## Project status
 
-- `index.html` — editable proposal structure and all product UI mockups
-- `styles.css` — print and screen styling with local Poppins/Inter fonts
-- `proposal.pdf` — print-ready A4 PDF (exactly four pages)
-- `assets/logo.svg` — editable vector brand mark
-- `assets/architecture.svg` — editable reference architecture
-- `assets/workflow.svg` — editable five-stage workflow
-- `assets/icons/icons.svg` — reusable SVG icon sprite
-- `assets/images/dashboard.png` — high-resolution prototype preview
-- `assets/fonts/` — locally packaged Poppins and Inter font files
+CyberShield AI is in Phase 1: project foundation and infrastructure setup. Interfaces, analysis workflows, and integrations will be added incrementally with tests and backward-compatible contracts.
 
-## Preview
+## Core principles
 
-Open `index.html` in a modern Chromium-based browser. The on-screen canvas shows four separate A4 artboards.
+- Analyzer evidence remains traceable to its source tool and contract location.
+- Cross-tool agreement is recorded but is not treated as proof of correctness.
+- AI-generated explanations and code recommendations are advisory.
+- Developers retain responsibility for remediation and deployment decisions.
+- Untrusted contracts are processed by isolated security-engine workers.
+- Components use typed interfaces so implementations can be tested and replaced independently.
 
-## Export the PDF
+## Architecture
 
-From this directory, run:
+The implementation follows the CyberShield AI reference architecture without introducing alternative components.
 
-```bash
-google-chrome-stable --headless --no-sandbox \
-  --disable-gpu --print-to-pdf=proposal.pdf \
-  --print-to-pdf-no-header file://$PWD/index.html
+1. A developer submits a Solidity contract.
+2. The Security Orchestrator validates the request and invokes analyzers.
+3. Slither, Mythril, and Solhint produce tool-specific findings.
+4. The Consensus Engine normalizes findings and records cross-tool agreement.
+5. AI Security Reasoning is reserved for a future provider abstraction supporting OpenAI or Gemini.
+6. The Explainability Engine links conclusions to analyzer evidence and source locations.
+7. Risk Scoring combines severity, analyzer agreement, and contract context.
+8. The interactive dashboard supports human review and disposition.
+9. The system produces a deployment readiness assessment.
+
+## Technology stack
+
+- Runtime: Python 3.12
+- Operating system: Ubuntu 24.04
+- Backend: FastAPI
+- Server-side frontend: Jinja2
+- Progressive interaction: HTMX
+- Client assets: HTML, CSS, and JavaScript
+- Security engines: Slither, Mythril, and Solhint
+- Application server: Uvicorn
+- Packaging and deployment: Docker and Docker Compose
+- Testing: pytest
+
+PostgreSQL, GitHub Actions, and OpenAI/Gemini integrations are planned capabilities and are not part of the current phase.
+
+## Repository structure
+
+```text
+CyberShield-AI/
+├── backend/          # FastAPI application and HTTP interface
+├── frontend/         # Frontend source modules
+├── templates/        # Jinja2 templates
+├── static/           # CSS, JavaScript, icons, and generated assets
+├── security/         # Security-engine adapters and finding normalization
+├── models/           # Typed domain and transport models
+├── services/         # Application use cases and orchestration services
+├── utils/            # Shared infrastructure utilities
+├── tests/            # Unit and integration tests
+├── .env.example      # Documented environment variables
+├── .gitignore        # Repository exclusions
+├── Dockerfile        # Ubuntu 24.04 application image
+├── docker-compose.yml
+├── requirements.txt  # Reproducible Python dependencies
+└── README.md
 ```
 
-In a browser print dialog, use:
+## Local requirements
 
-- Paper: A4
-- Margins: None
-- Scale: 100%
-- Background graphics: On
-- Headers and footers: Off
+Install the following before running the platform outside Docker:
 
-## Edit the proposal
+- Python 3.12
+- Node.js and npm for Solhint
+- A supported Solidity compiler
+- Slither
+- Mythril
+- Solhint
 
-Brand colors are CSS variables at the top of `styles.css`. Text and interface content live in clearly labeled page sections inside `index.html`. All diagrams and icons are SVG and can be edited in Figma, Illustrator, Inkscape, or any text editor.
+Security-engine versions will be pinned by the project dependency and container definitions. Do not rely on globally installed unpinned versions in production.
 
-## Design system
+## Initial setup
 
-- Primary: `#0B5FFF`
-- Secondary: `#00C2FF`
-- Accent: `#7C3AED`
-- Headings: Poppins
-- Body: Inter
-- Page size: 210 × 297 mm
+Create and activate an isolated Python environment:
+
+```bash
+python3.12 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+Create the local environment file:
+
+```bash
+cp .env.example .env
+```
+
+Environment files may contain secrets and must not be committed.
+
+## Run locally
+
+Start the FastAPI development server:
+
+```bash
+uvicorn backend.main:app --host 127.0.0.1 --port 8000 --reload
+```
+
+The application will be available at `http://127.0.0.1:8000`.
+
+Operational and discovery endpoints:
+
+- `GET /health` — dependency-free liveness check
+- `GET /api/v1/status` — implementation phase and capability inventory
+- `GET /docs` — interactive OpenAPI documentation in development
+
+## Run with Docker
+
+Build and start the service:
+
+```bash
+docker compose up --build
+```
+
+Stop the service:
+
+```bash
+docker compose down
+```
+
+The container configuration uses Ubuntu 24.04 and Python 3.12. Analyzer execution will be isolated from the web process as the security-worker services are introduced.
+
+## Testing
+
+Run the test suite from the repository root:
+
+```bash
+pytest
+```
+
+Run tests with coverage reporting:
+
+```bash
+pytest --cov=. --cov-report=term-missing
+```
+
+Tests must not require external AI services or network access. Security-engine adapters must support deterministic test doubles.
+
+## Logging and error handling
+
+Application modules use structured logging and must not log contract source code, credentials, tokens, or private repository data. Exceptions are translated at system boundaries into stable application errors; internal stack traces remain in protected logs and are not returned to clients.
+
+## Security considerations
+
+- Treat every submitted contract and repository as untrusted input.
+- Enforce input-size, file-type, process-time, memory, and output limits.
+- Run analyzers without host privileges or access to application secrets.
+- Validate analyzer output before converting it into domain models.
+- Escape user-controlled content in templates and browser responses.
+- Keep AI-provider credentials server-side when future integrations are enabled.
+- Require human review before accepting remediation or deployment readiness decisions.
+
+## Compatibility policy
+
+Public HTTP routes, domain models, analyzer result schemas, template context keys, and environment-variable names are compatibility-sensitive. Changes must remain backward compatible within a major release. Deprecations require documentation, tests, and a supported migration period.
+
+## Contributing
+
+Contributions should be focused, typed, documented, and covered by tests. Run formatting, static analysis, and the complete test suite before submitting a change. Security findings should be reported privately to the maintainers rather than disclosed in a public issue.
+
+## Scope limitations
+
+CyberShield AI cannot prove that a smart contract is secure. Static analysis, symbolic execution, linting, and AI-assisted reasoning each have coverage limitations. A readiness assessment summarizes available evidence and unresolved findings; it is not a certification, warranty, or substitute for expert review.
