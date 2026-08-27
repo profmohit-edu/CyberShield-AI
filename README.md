@@ -4,7 +4,15 @@ CyberShield AI is an open-source platform for explainable Solidity smart-contrac
 
 ## Project status
 
-CyberShield AI has completed Phase 8. The platform includes isolated Slither, Mythril, and Solhint adapters, concurrent orchestration, deterministic consensus correlation, a production REST API, and pure JSON, HTML, Markdown, SARIF 2.1.0, and PDF report generation.
+CyberShield AI has completed Phase 9. The platform includes isolated Slither, Mythril, and Solhint adapters, concurrent orchestration, deterministic consensus correlation, a production REST API, pure JSON, HTML, Markdown, SARIF 2.1.0 and PDF report generation, plus a bounded explainable-AI copilot demonstrator.
+
+## Live explainable-AI copilot
+
+The public demonstrator validates the repository's `Vault.sol` sample against a hash-bound analyzer evidence bundle derived from the existing multi-analyzer report. It transforms the immutable consensus object into structured model features and runs a local multinomial logistic-regression model to classify action priority. The interface shows model probability and feature contributions before presenting reviewed, vulnerability-specific mitigation guidance.
+
+This is bounded machine-learning inference, not an LLM simulation. The model is reproducibly trained from disclosed curated pedagogical profiles in `ai/training-data.json` by `ai/train_priority_model.py`. Its scope is evidence triage; it cannot detect findings, alter deterministic evidence, generate code patches or certify security. Arbitrary contract analysis remains the responsibility of the containerized FastAPI/analyzer pipeline.
+
+The original four-page ideathon artifact remains preserved as `ideathon-proposal.html`, with all source, architecture, reports, tests, releases and competition assets retained.
 
 ## Core principles
 
@@ -24,8 +32,8 @@ The implementation follows the CyberShield AI reference architecture without int
 3. Slither, Mythril, and Solhint produce tool-specific findings.
 4. The Consensus Engine normalizes findings and records cross-tool agreement.
 5. The Report Builder exports the complete evidence graph as JSON, HTML, Markdown, SARIF 2.1.0, or PDF.
-6. AI Security Reasoning is reserved for a future provider abstraction supporting OpenAI or Gemini.
-7. The interactive dashboard and deployment readiness workflows remain future milestones.
+6. A bounded local explainable-AI model consumes only structured consensus evidence and exposes its feature contributions.
+7. The public dashboard demonstrates evidence/AI separation using the repository's hash-bound analyzer sample; the FastAPI backend remains available for full analyzer execution.
 
 ## Technology stack
 
