@@ -1,0 +1,56 @@
+{
+  "model_type": "multinomial_logistic_regression",
+  "version": "1.0.0",
+  "classes": [
+    "BLOCK",
+    "REVIEW",
+    "MONITOR"
+  ],
+  "feature_names": [
+    "severity_weight",
+    "consensus_confidence",
+    "analyzer_count_norm",
+    "precise_location",
+    "class_reentrancy",
+    "class_access_control",
+    "class_unchecked_call"
+  ],
+  "weights": [
+    [
+      6.2075835,
+      1.531956,
+      1.70689848,
+      1.37760533,
+      1.41185378,
+      0.8768881,
+      -0.11256521
+    ],
+    [
+      0.38236455,
+      -1.30155254,
+      -0.73022061,
+      0.27920138,
+      0.8849196,
+      0.60740183,
+      0.38983178
+    ],
+    [
+      -6.58994805,
+      -0.23040346,
+      -0.97667787,
+      -1.65680671,
+      -2.29677338,
+      -1.48428993,
+      -0.27726657
+    ]
+  ],
+  "bias": [
+    -7.46048985,
+    1.54248108,
+    5.91800877
+  ],
+  "training_examples": 35,
+  "training_steps": 7000,
+  "training_data": "ai/training-data.json",
+  "scope": "Bounded evidence-priority triage; findings remain deterministic."
+}
